@@ -13,6 +13,7 @@ import {
 import { GiGraduateCap } from "react-icons/gi";
 import Navbar from "../../Components/Navbar";
 import buildingBg from "../../assests/buildingimg.png";
+import networkVideo from "../../videos/herobg.mp4";
 
 const MOCK_NOTICES = [
     {
@@ -40,34 +41,32 @@ const MOCK_NOTICES = [
 
 export default function Home() {
     return (
-        <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 overflow-x-hidden">
+        <div className="min-h-screen bg-gray-100 text-slate-900 font-sans selection:bg-blue-100 overflow-x-hidden">
             <Navbar />
 
             {/* 1. HERO SECTION */}
-            {/* 1. HERO SECTION */}
-            <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-                {/* Background Image Layer - Touching the very top */}
-                <div
-                    className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-                    style={{
-                        backgroundImage: `url(${buildingBg})`,
-                        filter: 'brightness(0.9) contrast(1.1)',
-                    }}
-                />
+            <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 overflow-hidden">
+                {/* Video Layer */}
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover z-0"
+                >
+                    <source src={networkVideo} type="video/mp4" />
+                </video>
 
-                {/* The Light Transparent Overlay - Seamless transition */}
-                <div className="absolute inset-0 z-0 bg-white/40 backdrop-blur-md" />
+                {/* The Light Transparent Overlay - Adjusted for better contrast with video */}
+                <div className="absolute inset-0 z-0 bg-white/50 backdrop-blur-sm" />
 
-                {/* Animated Background Orb */}
-                <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-400/20 rounded-full blur-[100px] z-0 animate-pulse" />
-
-                {/* Content Container - Padded down to sit below the header */}
-                <div className="max-w-6xl mx-auto text-center space-y-8 relative z-10 pt-20">
+                {/* Content Container */}
+                <div className="max-w-6xl mx-auto text-center space-y-6 sm:space-y-8 relative z-10 pt-24 sm:pt-20">
 
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50/90 text-blue-600 border border-blue-100 text-xs font-bold uppercase tracking-wider shadow-sm"
+                        className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-blue-50/90 text-blue-600 border border-blue-100 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-sm"
                     >
                         <FiZap size={14} className="fill-blue-600" />
                         Digital Notice Board & Secure Feedback
@@ -76,34 +75,34 @@ export default function Home() {
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-slate-900"
+                        className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-slate-900 px-2"
                     >
-                        The Digital Heart of <br />
+                        The Digital Heart of <br className="hidden sm:block" />
                         <span className="text-blue-600 italic">Campus Communication</span>
                     </motion.h1>
 
-                    <p className="max-w-2xl mx-auto text-lg text-slate-600 font-medium">
-                        Replace physical notice boards with a smart digital dashboard. Empower students with a secure, anonymous way to report issues and improve campus life.
+                    <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 font-medium px-4">
+                        Replace physical notice boards with a smart digital dashboard. Empower students with a secure, anonymous way to report issues.
                     </p>
 
-                    <div className="flex flex-wrap justify-center gap-4 pt-4">
-                        <Link to="/notices">
-                            <button className="px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-lg shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 transition-all flex items-center gap-2">
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4 px-6">
+                        <Link to="/Notices" className="w-full sm:w-auto">
+                            <button className="w-full px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-lg shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
                                 View Notice Board <FiArrowRight size={20} />
                             </button>
                         </Link>
-                        <Link to="/complaint">
-                            <button className="px-8 py-4 bg-white/80 backdrop-blur-sm text-slate-900 border-2 border-white rounded-2xl font-bold hover:bg-white transition-all flex items-center gap-2">
+                        <Link to="/ComplaintBox" className="w-full sm:w-auto">
+                            <button className="w-full px-8 py-4 bg-white/80 backdrop-blur-sm text-slate-900 border-2 border-white rounded-2xl font-bold hover:bg-white transition-all flex items-center justify-center gap-2">
                                 Submit a Complaint <FiMessageSquare size={18} />
                             </button>
                         </Link>
                     </div>
 
-                    <div className="flex justify-center gap-8 pt-6">
-                        <div className="flex items-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-widest">
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 pt-6">
+                        <div className="flex items-center gap-2 text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">
                             <FiShield className="text-green-600" /> 100% Anonymous
                         </div>
-                        <div className="flex items-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-widest">
+                        <div className="flex items-center gap-2 text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">
                             <FiBell className="text-blue-600" /> Real-time Alerts
                         </div>
                     </div>
@@ -191,7 +190,7 @@ export default function Home() {
                                 </li>
                             ))}
                         </ul>
-                        <Link to="/complaint">
+                        <Link to="/ComplaintBox">
                             <button className="px-10 py-4 bg-blue-600 text-white rounded-full font-bold shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all">
                                 File a Complaint
                             </button>

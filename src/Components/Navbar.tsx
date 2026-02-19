@@ -11,8 +11,8 @@ const Navbar = () => {
 
     const navItems = [
         { label: 'Home', href: '/Home' },
-        { label: 'Notice', href: '/notices' },
-        { label: 'Complaint', href: '/complaint' },
+        { label: 'Notice', href: '/Notices' },
+        { label: 'Complaint', href: '/ComplaintBox' },
     ];
 
     return (
@@ -46,7 +46,7 @@ const Navbar = () => {
                     </button>
 
                     {/* Logout Hidden on Mobile to save space (moved to menu) */}
-                    <button onClick={() => navigate('/login')} className="hidden md:block p-2 text-slate-500 hover:text-slate-800 transition-colors">
+                    <button onClick={() => navigate('/')} className="hidden md:block p-2 text-slate-500 hover:text-slate-800 transition-colors">
                         <FiLogOut size={22} />
                     </button>
 
@@ -75,7 +75,7 @@ const Navbar = () => {
                         </Link>
                     ))}
                     <button
-                        onClick={() => navigate('/login')}
+                        onClick={() => navigate('/')}
                         className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide p-3 text-red-600 bg-red-50 rounded-xl"
                     >
                         <FiLogOut size={18} /> Logout
