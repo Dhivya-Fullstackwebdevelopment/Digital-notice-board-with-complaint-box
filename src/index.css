@@ -11,6 +11,11 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  /* padding-top: 80px; */
+}
+
+.bg-black {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 a {
@@ -39,11 +44,10 @@ button {
   font-size: 14px;
   letter-spacing: 0.5px;
   position: relative;
-  /* Removed box-shadow to keep it clean like the screenshot */
 }
 
 .pill.is-active {
-  color: #2563eb; /* Matches the Blue-600 theme */
+  color: #2563eb;
 }
 
 .pill-label,
@@ -60,4 +64,25 @@ button {
   z-index: 10 !important;
 }
 
-/* Removed all dot-related styles ::after and .active-dot */
+.font-black {
+  font-weight: 900;
+}
+
+.brand-logo:hover svg {
+  transform: rotate(15deg);
+  transition: transform 0.2s ease;
+}
+
+.pill.is-active .pill-label {
+  color: #2563eb;
+}
+
+nav {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.fixed {
+  outline: none;
+  border: none;
+}
