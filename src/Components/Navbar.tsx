@@ -20,7 +20,9 @@ const Navbar = () => {
             <div className="max-w-[1440px] mx-auto flex items-center justify-between">
 
                 {/* Brand Section */}
-                <div className="flex items-center gap-2">
+                <div
+                    onClick={() => navigate('/Home')}
+                    className="flex items-center gap-2">
                     <div className="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center shrink-0 shadow-sm">
                         <GiGraduateCap size={22} />
                     </div>
