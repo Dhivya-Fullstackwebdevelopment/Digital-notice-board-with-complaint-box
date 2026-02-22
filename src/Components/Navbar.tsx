@@ -11,10 +11,18 @@ const Navbar = () => {
 
     const navItems = [
         { label: 'Home', href: '/Home' },
-        { label: 'Notice', href: '/Notices' },
+        { label: 'Notice', href: '/Notices', isParentOf: '/Notice' },
         { label: 'Complaint', href: '/ComplaintBox' },
         { label: 'Complaint Status', href: '/ComplaintStatus' },
     ];
+
+    const isActive = (item: { label: string; href: string; isParentOf?: string }) => {
+        if (item.href === '/Notices') {
+            return location.pathname === '/Notices' || location.pathname.startsWith('/Notice/');
+        }
+        return location.pathname === item.href;
+    };
+    const currentActiveItem = navItems.find(item => isActive(item));
 
     return (
         <nav className="fixed top-0 left-0 w-full z-[100] bg-white/90 backdrop-blur-md px-4 md:px-6 py-3">
@@ -37,7 +45,7 @@ const Navbar = () => {
                 <div className="hidden md:flex flex-grow justify-center">
                     <PillNav
                         items={navItems}
-                        activeHref={location.pathname}
+                        activeHref={currentActiveItem ? currentActiveItem.href : location.pathname}
                     />
                 </div>
 

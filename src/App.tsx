@@ -6,6 +6,7 @@ import Homepage from "./Components/Pages/Homepage";
 import NoticeBoard from "./Components/Pages/NoticeBoard";
 import ComplaintBox from "./Components/Pages/ComplaintBox";
 import ComplaintStatus from "./Components/Pages/ComplaintStatus";
+import NoticeDetail from "./Components/Pages/NoticeDetail";
 
 function LoginLayout() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/Home" element={<Homepage />} />
           <Route path="/Notices" element={<NoticeBoard />} />
+          <Route path="/Notice/:id" element={<NoticeDetail />} />
           <Route path="/ComplaintBox" element={<ComplaintBox />} />
           <Route path="/ComplaintStatus" element={<ComplaintStatus />} />
         </Route>
