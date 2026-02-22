@@ -33,7 +33,6 @@ export default function Footer() {
     );
 }
 
-// Small helper component for social icons
 function SocialIcon({ Icon }: { Icon: React.ComponentType<{ size: number }> }) {
     return (
         <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:text-blue-600 border border-slate-200 shadow-sm transition-all cursor-pointer">

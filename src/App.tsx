@@ -7,8 +7,6 @@ import NoticeBoard from "./Components/Pages/NoticeBoard";
 import ComplaintBox from "./Components/Pages/ComplaintBox";
 import ComplaintStatus from "./Components/Pages/ComplaintStatus";
 
-
-// Layout for Login Page
 function LoginLayout() {
   return (
     <div className="relative min-h-screen flex flex-col font-sans">
@@ -20,7 +18,6 @@ function LoginLayout() {
   );
 }
 
-// Layout for Other Pages
 function MainLayout() {
   return (
     <div className="relative min-h-screen flex flex-col font-sans">
@@ -36,12 +33,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Login Route */}
         <Route element={<LoginLayout />}>
           <Route path="/" element={<StudentLogin />} />
         </Route>
 
-        {/* All Other Routes */}
         <Route element={<MainLayout />}>
           <Route path="/Home" element={<Homepage />} />
           <Route path="/Notices" element={<NoticeBoard />} />
@@ -49,7 +44,6 @@ function App() {
           <Route path="/ComplaintStatus" element={<ComplaintStatus />} />
         </Route>
 
-        {/* 404 */}
         <Route
           path="*"
           element={
