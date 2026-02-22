@@ -40,7 +40,7 @@ export default function ComplaintStatus() {
         e.preventDefault();
         if (!searchId) return;
         setLoading(true);
-        setComplaint(null); // Reset for new animation
+        setComplaint(null);
 
         setTimeout(() => {
             setComplaint({
@@ -57,43 +57,37 @@ export default function ComplaintStatus() {
 
     return (
         <div className="min-h-screen bg-slate-50 relative overflow-hidden font-sans">
-            {/* --- DYNAMIC THEME LAYER --- */}
-            <div className="absolute inset-0 z-0 opacity-[0.2]"
-                style={{ backgroundImage: `radial-gradient(#cbd5e1 1px, transparent 1px)`, backgroundSize: '32px 32px' }} />
-
-            {/* Moving Background Blobs */}
-            <motion.div
-                animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                className="absolute top-[-5%] left-[-5%] w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[120px] pointer-events-none"
+            {/* THEME LAYER: Match patterns from Complaint Box */}
+            <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
+                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23000' stroke-width='1'%3E%3Cpath d='M36 34v-4H20v4H15V20h4v-5h10v5h5v10h10V15h10v15h-5v4h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }}
             />
-            <motion.div
-                animate={{ x: [0, -40, 0], y: [0, -20, 0] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-100/30 rounded-full blur-[100px] pointer-events-none"
-            />
+            <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-200/40 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-indigo-200/40 rounded-full blur-[120px] pointer-events-none" />
 
             <Navbar />
 
-            <div className="relative z-10 max-w-4xl mx-auto pt-32 px-6 pb-20">
+            <div className="relative z-10 max-w-4xl mx-auto pt-28 px-6 pb-20">
                 {/* Header Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-center mb-12"
-                >
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold uppercase tracking-widest border border-blue-100 mb-4 shadow-sm">
-                        <FiShield /> Live Tracking System
-                    </div>
-                    <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
-                        Check Status <span className="text-blue-600">Instantly</span>
+                <div className="text-center mb-12">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 bg-white text-blue-600 text-[10px] font-bold uppercase tracking-widest rounded-full border border-blue-100 shadow-sm mb-6"
+                    >
+                        <FiShield size={12} className="fill-blue-50" />
+                        Live Tracking System
+                    </motion.div>
+
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+                        Track <span className="text-blue-600">Complaint Status</span>
                     </h1>
-                    <p className="text-slate-500 max-w-lg mx-auto font-medium">
+
+                    <p className="text-slate-500 text-lg max-w-xl mx-auto font-medium">
                         Enter your unique ID to see where your report is in our resolution pipeline.
                     </p>
-                </motion.div>
+                </div>
 
-                {/* Search Bar with Pulse on Hover */}
+                {/* Search Bar themed like the Form inputs */}
                 <motion.form
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -107,12 +101,12 @@ export default function ComplaintStatus() {
                             placeholder="Enter Complaint ID (e.g. #CMP-102)"
                             value={searchId}
                             onChange={(e) => setSearchId(e.target.value)}
-                            className="w-full pl-14 pr-32 py-5 bg-white/80 backdrop-blur-xl border border-slate-200 rounded-3xl shadow-2xl focus:ring-8 focus:ring-blue-500/5 outline-none transition-all text-slate-900 font-bold"
+                            className="w-full pl-14 pr-40 py-5 bg-white/70 backdrop-blur-xl border border-white rounded-[2rem] shadow-2xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all text-slate-900 font-bold placeholder:text-slate-400"
                         />
                         <button
                             type="submit"
                             disabled={loading}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 px-7 py-3 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2 shadow-lg shadow-blue-200 disabled:opacity-50"
+                            className="absolute right-2 top-2 bottom-2 px-8 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2 shadow-lg shadow-blue-200 disabled:opacity-50"
                         >
                             {loading ? <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1 }}> <FiActivity /> </motion.div> : <><FiSearch /> Track</>}
                         </button>
@@ -127,16 +121,12 @@ export default function ComplaintStatus() {
                             animate="visible"
                             className="space-y-8"
                         >
-                            {/* Main Card */}
+                            {/* Main Card themed with the "rounded-[3rem]" and "bg-white/70" from the Box */}
                             <motion.div
                                 variants={itemVariants}
-                                className="bg-white/90 backdrop-blur-2xl p-8 md:p-12 rounded-[3.5rem] border border-white shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] relative overflow-hidden"
+                                className="backdrop-blur-xl bg-white/70 border border-white shadow-2xl rounded-[3rem] p-8 md:p-12 relative overflow-hidden"
                             >
-                                {/* Decorative Glow inside card */}
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl" />
-
                                 <div className="flex justify-between items-center mb-16 relative px-4">
-                                    {/* Progress Line Layer */}
                                     <div className="absolute top-1/2 left-0 w-full h-1 bg-slate-100 -translate-y-1/2 z-0" />
                                     <motion.div
                                         initial={{ width: 0 }}
@@ -153,11 +143,11 @@ export default function ComplaintStatus() {
                                                     initial={{ scale: 0 }}
                                                     animate={{ scale: 1 }}
                                                     transition={{ delay: idx * 0.2 + 0.8 }}
-                                                    className={`w-16 h-16 rounded-3xl flex items-center justify-center transition-all duration-700 rotate-3 group hover:rotate-0 ${isCompleted ? `${stage.bg} text-white shadow-2xl shadow-blue-200` : 'bg-white text-slate-300 border border-slate-100'}`}
+                                                    className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl flex items-center justify-center transition-all duration-700 ${isCompleted ? `${stage.bg} text-white shadow-2xl shadow-blue-200` : 'bg-white text-slate-300 border border-slate-100'}`}
                                                 >
-                                                    <stage.icon size={28} />
+                                                    <stage.icon size={24} />
                                                 </motion.div>
-                                                <span className={`text-[10px] font-black uppercase tracking-widest ${isCompleted ? 'text-slate-900' : 'text-slate-400'}`}>
+                                                <span className={`text-[10px] font-bold uppercase tracking-widest ${isCompleted ? 'text-slate-900' : 'text-slate-400'}`}>
                                                     {stage.label}
                                                 </span>
                                             </div>
@@ -166,13 +156,13 @@ export default function ComplaintStatus() {
                                 </div>
 
                                 {/* Details Grid */}
-                                <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-10 pt-10 border-t border-slate-100/50">
+                                <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-10 pt-10 border-t border-slate-200/50">
                                     <div className="space-y-1">
-                                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-500">Topic</span>
-                                        <p className="text-2xl font-bold text-slate-900 tracking-tight">{complaint.subject}</p>
+                                        <label className="text-xs font-bold uppercase tracking-widest text-blue-500">Subject</label>
+                                        <p className="text-2xl font-extrabold text-slate-900 tracking-tight">{complaint.subject}</p>
                                     </div>
                                     <div className="md:text-right space-y-1">
-                                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Admin Comment</span>
+                                        <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Admin Comment</label>
                                         <p className="text-slate-600 font-medium italic">"{complaint.update}"</p>
                                     </div>
                                     <div className="flex items-center gap-4">
@@ -189,8 +179,7 @@ export default function ComplaintStatus() {
                                 </motion.div>
                             </motion.div>
 
-                            {/* Bottom Call to action or Info */}
-                            <motion.p variants={itemVariants} className="text-center text-slate-400 text-xs font-medium">
+                            <motion.p variants={itemVariants} className="text-center text-slate-500 text-sm font-medium">
                                 If you believe this status is incorrect, please visit the HOD office or resubmit your complaint.
                             </motion.p>
                         </motion.div>

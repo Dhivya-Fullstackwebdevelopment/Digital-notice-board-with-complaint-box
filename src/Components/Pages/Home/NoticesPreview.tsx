@@ -15,11 +15,13 @@ export default function NoticesPreview({ notices }: { notices: Notice[] }) {
         <section className="py-24 bg-slate-50 border-y border-slate-100">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6 text-center md:text-left">
-                    <div>
-                        <h2 className="text-4xl font-bold text-slate-900 mb-4 flex items-center gap-3 justify-center md:justify-start">
+                    <div className="flex flex-col gap-2">
+                        <h2 className="text-4xl font-extrabold text-slate-900 flex items-center gap-3 justify-center md:justify-start tracking-tight">
                             <FiBell className="text-blue-600" /> Latest Announcements
                         </h2>
-                        <p className="text-slate-500 text-lg italic">Stay updated with the latest happenings.</p>
+                        <p className="text-slate-500 text-lg italic font-medium">
+                            Stay updated with the latest happenings.
+                        </p>
                     </div>
                     <Link to="/notices" className="text-blue-600 font-bold hover:underline flex items-center gap-2">
                         View All Notices <FiArrowRight size={16} />
