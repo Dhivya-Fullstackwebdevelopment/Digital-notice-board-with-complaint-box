@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const ALL_NOTICES = [
     { id: "1", title: "End Semester Examination Schedule", category: "Academic", date: "Oct 24, 2025", content: "Schedule is out now. Please check the department portal for details." },
     { id: "2", title: "Annual Cultural Fest", category: "Event", date: "Oct 22, 2025", content: "Registrations open for Utopia 2025. Sign up now!" },
-    
+
 ];
 
 export default function Notices() {
@@ -15,7 +15,19 @@ export default function Notices() {
     const [searchQuery, setSearchQuery] = useState("");
     const [displayNotices, setDisplayNotices] = useState(ALL_NOTICES);
 
-    const categories = ["All", "Academic", "Event", "Emergency"];
+    const categories = [
+        "All",
+        "Academic",
+        "Event",
+        "Emergency",
+        "Placement",
+        "Examination",
+        "Scholarship",
+        "Sports",
+        "Hostel",
+        "Library",
+        "Competition"
+    ];
 
     useEffect(() => {
         const adminNotices = JSON.parse(localStorage.getItem("campus_notices") || "[]");
@@ -39,11 +51,11 @@ export default function Notices() {
             <Navbar />
 
             <div className="relative z-10 max-w-7xl mx-auto pt-32 px-6">
-                
+
                 {/* Header Section */}
                 <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-6">
                     <div>
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-bold uppercase tracking-widest rounded-full border border-blue-100 mb-3"
@@ -69,27 +81,25 @@ export default function Notices() {
 
                 {/* Tabs Section */}
                 <div className="relative mb-10">
-                    <div className="flex flex-wrap gap-3 pb-4 relative z-10">
+                    <div className="flex overflow-x-auto gap-3 pb-4 relative z-10 
+                    scrollbar-light">
                         {categories.map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
-                                className={`px-8 py-2.5 rounded-xl text-xs font-black transition-all whitespace-nowrap border ${
-                                    activeTab === tab
-                                        ? "bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-200 scale-105"
-                                        : "bg-white/50 text-slate-400 border-white hover:bg-white hover:text-slate-600 shadow-sm"
-                                }`}
+                                className={`px-8 py-2.5 rounded-xl text-xs font-black transition-all whitespace-nowrap border ${activeTab === tab
+                                    ? "bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-200 scale-105"
+                                    : "bg-white text-slate-400 border-slate-100 hover:text-blue-600 shadow-sm"
+                                    }`}
                             >
                                 {tab}
                             </button>
                         ))}
                     </div>
-                    {/* Shadow Line for visual separation */}
-                    <div className="absolute bottom-[14px] left-0 right-0 h-[1px] bg-slate-200/50" />
                 </div>
 
                 {/* Notices Grid */}
-                <motion.div 
+                <motion.div
                     layout
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch"
                 >
