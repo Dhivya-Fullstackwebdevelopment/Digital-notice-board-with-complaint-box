@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { FiArrowLeft, FiCalendar, FiShare2, FiClock, FiBookmark, FiDownload, FiFileText, FiImage, FiChevronDown, FiAlertCircle } from "react-icons/fi";
+import { FiArrowLeft, FiCalendar, FiShare2, FiBookmark, FiDownload, FiFileText, FiImage, FiChevronDown } from "react-icons/fi";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Navbar from "../Navbar";
 import clgimg from "../../assests/clg.jpeg";

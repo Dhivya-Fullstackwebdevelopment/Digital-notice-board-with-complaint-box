@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FiSend, FiLock, FiUser, FiChevronDown } from "react-icons/fi";
+import { FiSend, FiLock, FiUser } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../Navbar";
 

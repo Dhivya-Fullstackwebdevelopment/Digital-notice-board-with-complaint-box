@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FiArrowRight, FiZap, FiMessageSquare, FiShield, FiBell } from "react-icons/fi";
+import { FiArrowRight, FiZap, FiMessageSquare } from "react-icons/fi";
 import networkVideo from "../../../videos/herobg.mp4";
 
 export default function Hero() {
