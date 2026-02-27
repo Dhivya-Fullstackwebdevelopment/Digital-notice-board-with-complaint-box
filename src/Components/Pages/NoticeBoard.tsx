@@ -10,12 +10,12 @@ const ALL_NOTICES = [
 ];
 
 export default function Notices() {
-    const [activeTabId, setActiveTabId] = useState(""); 
+    const [activeTabId, setActiveTabId] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
     const [displayNotices, setDisplayNotices] = useState(ALL_NOTICES);
 
     const categories = [
-        { id: "", label: "All" }, 
+        { id: "", label: "All" },
         { id: "1", label: "Academic" },
         { id: "2", label: "Event" },
         { id: "3", label: "Emergency" },
@@ -25,7 +25,8 @@ export default function Notices() {
         { id: "7", label: "Sports" },
         { id: "8", label: "Hostel" },
         { id: "9", label: "Library" },
-        { id: "10", label: "Competition" }
+        { id: "10", label: "Competition" },
+        { id: "99", label: "Other" }
     ];
 
     useEffect(() => {
@@ -36,12 +37,12 @@ export default function Notices() {
     const filteredNotices = displayNotices.filter(notice => {
         // Find the label of the current active ID to compare with notice.category string
         const activeCategory = categories.find(cat => cat.id === activeTabId);
-        
-        const matchesTab = activeTabId === "" || 
+
+        const matchesTab = activeTabId === "" ||
             (activeCategory && notice.category.toLowerCase() === activeCategory.label.toLowerCase());
-            
+
         const matchesSearch = notice.title.toLowerCase().includes(searchQuery.toLowerCase());
-        
+
         return matchesTab && matchesSearch;
     });
 
